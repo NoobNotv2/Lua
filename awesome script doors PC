@@ -5,13 +5,6 @@
 local Player = game.Players.LocalPlayer
 if getgenv().Fpsunlocker == true then -- FPsunlocker
     setfpscap(100000)
-enda-- getgenv().Fpsunlocker = true
--- Join my discord: https://discord.gg/6hjxUMSx lolcat server for normal awesome script: https://discord.gg/eSfnvXJw
--- support every executors but not synapse x cracked
--- by the way before i go i have to tell you something so this script is contain bugs not verifed and without asking permissions
-local Player = game.Players.LocalPlayer
-if getgenv().Fpsunlocker == true then -- FPsunlocker
-    setfpscap(100000)
 end
 if game.CoreGui:FindFirstChild("FluxLib") or game.CoreGui:FindFirstChild("Message") then return end
 repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
