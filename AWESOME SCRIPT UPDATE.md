@@ -14,4 +14,7 @@ in the past update ( BIG UPDATE ) :
 Latest Update ( One update ) :
 ```diff
 + Changed keybinds to End to Close/Open Gui
+- Remove Field of view ( Because its not working/Patched )
+- Remove fullbright ( Because its Patched )
++ Rename "Auto Instant Interact (WIP)" to "Auto Clam Gold (WIP)"
 ```
