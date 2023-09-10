@@ -18,4 +18,5 @@ Latest Update ( One update ) :
 - Remove fullbright ( Because its Patched )
 + Rename "Auto Instant Interact (WIP)" to "Auto Clam Gold (WIP)"
 + Change Walkspeed Value Max At 93
+- Remove Fpsunlocker Script in Start of loadstring
 ```
