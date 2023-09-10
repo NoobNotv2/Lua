@@ -1,3 +1,4 @@
+# Update Log ( Don't Forget mobile version is discountinued)
 in the past update ( BIG UPDATE ) : 
 ```diff
 + Add Field of view ( Not working )
