@@ -1,9 +1,5 @@
--- getgenv().Fpsunlocker = true
--- Join my discord: https://discord.gg/6hjxUMSx lolcat server for normal awesome script: https://discord.gg/eSfnvXJw
+-- Join my discord: https://discord.gg/zkKrRWZmQA lolcat server for normal awesome script: https://discord.gg/eSfnvXJw
 local Player = game.Players.LocalPlayer
-if getgenv().Fpsunlocker == true then -- FPsunlocker
-    setfpscap(100000)
-end
 if game.CoreGui:FindFirstChild("FluxLib") or game.CoreGui:FindFirstChild("Message") then return end
 repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 if identifyexecutor() ~= "Synapse X" then
@@ -40,6 +36,7 @@ local Tab3 = Window:Tab("Items", "rbxassetid://10885640682")
 local Tab4 = Window:Tab("Icons for player ( PATCHEDDDDD )", "rbxassetid://10048816455")
 local Tab5 = Window:Tab("credits", "rbxassetid://6022668888")
 local Tab6 = Window:Tab("misc", "rbxassetid://6022668888")
+local Tab7 = Window:Tab("Custom Items", "rbxassetid://6022668888")
 -- Functions
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
@@ -726,15 +723,9 @@ Tab:Toggle("Noclip + Bypass","Lets you walk through any object. Does not work on
     end
     PrimaryPart.CanCollide = not Noclip
 end)
-Tab:Slider("Walkspeed","Set Your walkspeed.",0,89,0,function(speed) --Speed boost slider
+Tab:Slider("Walkspeed","Set Your walkspeed.",0,93,0,function(speed) --Speed boost slider
     SpeedBoost = speed
     ApplySpeed(true)
-end)
-Tab:Toggle("Enable Field of view","Enable FOV",false,function(v56)
-    _G.FieldOfView = v56;
-end)
-Tab:Slider("Field of view","Change your FOV.",0,120,0,function(v90) --Field of view slider
-    FieldOfViewe = v90;
 end)
 game:GetService("RunService").RenderStepped:Connect(function()
 	pcall(function()
@@ -925,33 +916,6 @@ Tab2:Toggle("Other ESP","Highlights all hostile entities.",false,function(Bool)
 end)
 game:GetService("RunService").RenderStepped:Connect(function()
 	pcall(function()
-		if _G.FullBright then			
-            local Light = game:GetService("Lighting")
-
-            function dofullbright()
-            Light.Ambient = Color3.new(1, 1, 1)
-            Light.ColorShift_Bottom = Color3.new(1, 1, 1)
-            Light.ColorShift_Top = Color3.new(1, 1, 1)
-            end
-            dofullbright()
-            Light.LightingChanged:Connect(dofullbright)
-		end
-	end);
-end);
-Tab2:Toggle("Fullbright","Make the game brighter",false,function(Bool)
-	if v63 then
-		_G.FullBright = true;
-	else
-		_G.FullBright = false;
-		game:GetService("Lighting").FogEnd = 11111111384160920 - -149103976;
-		game:GetService("Lighting").Brightness = 104 - (19 + 82);
-		game:GetService("Lighting").ClockTime = 20;
-		game:GetService("Lighting").GlobalShadows = true;
-		game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(0.5, 0.5, 0.5 + 0);
-	end
-end)
-game:GetService("RunService").RenderStepped:Connect(function()
-	pcall(function()
 		if _G.Gates then
 			if game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Gate"):FindFirstChild("ThingToOpen") then
 				game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Gate"):Destroy();
@@ -959,6 +923,30 @@ game:GetService("RunService").RenderStepped:Connect(function()
 		end
 	end);
 end);
+Tab2:Toggle("Remove Doors","Need to open door",false,function(v167)
+    local v168 = 0;
+	while true do
+		if (v168 == (0 - 0)) then
+			_G.Removedoorsss = v167;
+			if (_G.Removedoorsss == true) then
+				game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door").Door.CFrame = game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door").Door.CFrame * CFrame.new(0 + 0, -(15250 - 5250), 1244 - (485 + 759));
+			end
+			v168 = 2 - 1;
+		end
+		if (1 == v168) then
+			task.spawn(function()
+				game.workspace.CurrentRooms.ChildAdded:Connect(function(v443)
+					if _G.Removedoorsss then
+						if v443:IsA("Model") then
+							game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door").Door.CFrame = game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door").Door.CFrame * CFrame.new(1189 - (442 + 747), -(11135 - (832 + 303)), 946 - (88 + 858));
+						end
+					end
+				end);
+			end);
+			break;
+		end
+	end
+end)
 Tab2:Toggle("Remove Gate Doors","Delete all Gates.",false,function(v86)
     _G.Gates = v86;
 end)
@@ -1049,6 +1037,37 @@ Tab6:Button("Infinite yield","JIT",function()
 end)
 Tab6:Button("SERVER STATUS","It will copy to your clipboard and you have to place it in autoexec folder",function()
     setclipboard("https://pastebin.com/raw/K0sq5C4G");
+end)
+Tab7:Label("Crucfix")
+Tab7:Slider("Use","",0,100,0,function(v123)
+    CruUseValue = v123;
+end)
+Tab7:Slider("Range","",0,50,0,function(v124)
+    CruUseValue = v123;
+end)
+Tab7:Toggle("On anaything","Use it for Object",false,function(Cruanything)
+    Cruanything = v125;
+end)
+Tab7:Toggle("Fail","Use it for fail",false,function(CruFail)
+    CruFail = v126;
+end)
+Tab7:Button("Get crucfix","",function()
+    local v127 = 86 - (84 + 2);
+	local v128;
+	while true do
+		if (v127 == (2 - 0)) then
+			v128:Destroy();
+			_G.Uses = CruUseValue;
+			_G.Range = CruRange;
+			v127 = 3 + 0;
+		end
+		if (v127 == (3 + 0)) then
+			_G.OnAnything = Cruanything;
+			_G.Fail = CruFail;
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua"))();
+			break;
+		end
+	end
 end)
 TextChatService.OnIncomingMessage = function(MessageData)
     task.spawn(function()
