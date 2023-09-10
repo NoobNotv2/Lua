@@ -17,4 +17,5 @@ Latest Update ( One update ) :
 - Remove Field of view ( Because its not working/Patched )
 - Remove fullbright ( Because its Patched )
 + Rename "Auto Instant Interact (WIP)" to "Auto Clam Gold (WIP)"
++ Change Walkspeed Value Max At 93
 ```
