@@ -112,7 +112,7 @@ local Ranks = {
         Title = "awesome script creator", --Lolcat
         Color = Color3.new(0,0.8,0)
     },
-    KeyBindEditer = {
+    Mr. hong = {
         Title = "Mr hong", --kardin
         Color = Color3.new(0.9,0,0)
     },
@@ -124,11 +124,15 @@ local Ranks = {
         Title = "official greg heffley", 
         Color = Color3.new(0.3,0.3,0.3)
     }
+    Evil = {
+        Title = "Evil >:)", 
+        Color = Color3.new(0,9,0,0)
+    }
 }
 local PlayerRanks = {
     ["2615068449"] = "Creator", -- lolcat ( the creator of awesome script ) and ( also kown as youtubers who makeing doors but useing script and useing synapse x )
-    ["2300945089"] = "Mr hong", -- kardin ( also kown as youtubers who makes doors speedruns video and script live stream in windows light mode also kown as windows 10 home not pro )
-    ["3962486879"] = "Cool", -- Noob Not ( me who makes awesome script better )
+    ["2300945089"] = "Mr hong", -- kardin ( also kown as youtubers who makes doors speedruns video and script live stream )
+    ["3962486879"] = "Evil", -- Noob Not ( me who makes awesome script better )
     ["4878374612"] = "Cool", -- my friend NFORMURDRONES
     ["211059753"] = "Greg", --Greg idk 
     ["4740011995"] = "Cool" --my friend thongnung ( In real life )
@@ -729,7 +733,7 @@ Tab:Slider("Walkspeed","Set Your walkspeed.",0,93,0,function(speed) --Speed boos
 end)
 game:GetService("RunService").RenderStepped:Connect(function()
 	pcall(function()
-		if _G.SlowDownnnonononoo then
+		if _G.NoAcceleration then
 			local v253 = false;
 			game.Players.LocalPlayer.Character.Head.Massless = v253;
 			game.Players.LocalPlayer.Character.LeftFoot.Massless = v253;
@@ -750,8 +754,8 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	end);
 end);
 Tab:Toggle("No Acceleration","NO Slow DOwn",false,function(v60)
-	_G.SlowDownnnonononoo = v60;
-	if (_G.SlowDownnnonononoo == false) then
+	_G.NoAcceleration = v60;
+	if (_G.NoAcceleration == false) then
 		local v190 = true;
 		game.Players.LocalPlayer.Character.Head.Massless = v190;
 		game.Players.LocalPlayer.Character.LeftFoot.Massless = v190;
