@@ -28,7 +28,7 @@ if identifyexecutor() ~= "Synapse X" then
     end
 end
 local Flux = loadstring(game:HttpGetAsync("https://noobnot8753.000webhostapp.com/assets/flux-fixed"))() --Booting Lib
-local Window = Flux:Window("awesome script  ", "Doors | "..Player.Name..".", nil, Enum.KeyCode.End)
+local Window = Flux:Window("awesome script  ", "Doors | "..Player.Name..".", nil, Enum.KeyCode.RightControl)
 -- Create tab
 local Tab = Window:Tab("Manual", "rbxassetid://6026568198")
 local Tab2 = Window:Tab("Visual and Esp", "rbxassetid://6031763426")
