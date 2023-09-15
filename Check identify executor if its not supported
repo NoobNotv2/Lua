@@ -1,0 +1,25 @@
+if identifyexecutor() ~= "Synapse X" then
+    local Warn = Instance.new("Message", game.CoreGui)
+    local RunScript
+    local con
+    Warn.Text = "WARNING: awesome script is Build for Synapse X. You may encounter bugs while using " .. identifyexecutor() .. ".\nPress BACKSPACE to stop script execution. Press ENTER to load anyway."
+    con = game.UserInputService.InputBegan:Connect(function(Input, Typing)
+        if Typing then return end
+        if Input.KeyCode == Enum.KeyCode.Backspace then
+            RunScript = false
+            Warn:Destroy()
+            con:Disconnect()
+        elseif Input.KeyCode == Enum.KeyCode.Return then
+            RunScript = true
+            Warn:Destroy()
+            con:Disconnect()
+        end
+    end)
+    while task.wait(1) do
+        if RunScript == false then
+            return
+        elseif RunScript then
+            break
+        end
+    end
+end
