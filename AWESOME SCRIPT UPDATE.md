@@ -11,7 +11,7 @@ in the past update ( BIG UPDATE ) :
 - Remove Custom Shop ( if you want it you can Get it here : https://noobnot.gitbook.io/noobnot-site/script/custom-shop-doors )
 + Add Remove gate doors
 ```
-Latest Update ( One update ) :
+Past Update for like 1 weeks :
 ```diff
 + Changed keybinds to End to Close/Open Gui
 - Remove Field of view ( Because its not working/Patched )
@@ -19,4 +19,8 @@ Latest Update ( One update ) :
 + Rename "Auto Instant Interact (WIP)" to "Auto Clam Gold (WIP)"
 + Change Walkspeed Value Max At 93
 - Remove Fpsunlocker Script in Start of loadstring
+```
+9/15/2023 at 8:44 PM Update :
+```diff
+- Remove End keybind to close/open gui
 ```
