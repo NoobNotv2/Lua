@@ -28,13 +28,12 @@ if identifyexecutor() ~= "Synapse X" then
     end
 end
 local Flux = loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/Script/main/flux-fixed'))() --Booting Lib
-
 local Window = Flux:Window("awesome script  ", "Doors | "..Player.Name..".", nil, Enum.KeyCode.RightControl)
 -- Create tab
 local Tab = Window:Tab("[>Manual<]", "rbxassetid://6026568198")
 local Tab2 = Window:Tab("[>Visual<]", "rbxassetid://6031763426")
 local Tab3 = Window:Tab("[>Items<]", "rbxassetid://10885640682")
-local Tab4 = Window:Tab("", "rbxassetid://")
+local Tab4 = Window:Tab("PATCHEDDD", "rbxassetid://4483362458")
 local Tab5 = Window:Tab("[>credits<]", "rbxassetid://6022668888")
 local Tab6 = Window:Tab("[>misc<]", "rbxassetid://6022668888")
 local Tab7 = Window:Tab("[>Custom Items<]", "rbxassetid://6022668888")
