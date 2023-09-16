@@ -853,6 +853,9 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then
         end
     end)
 end
+Tab:Button("entity notifiaction ( Hotel )","",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobNotv2/Script/main/Entity-Nof"))()
+end)
 Tab:Toggle("Waste Other Players Items","Repeatedly uses everyone else's items like Vitamins, The Lighter, and The Flashlight.",false,function(Bool)
     WasteItems = Bool
     while task.wait(1) do
