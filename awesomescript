@@ -124,15 +124,11 @@ local Ranks = {
         Title = "official greg heffley", 
         Color = Color3.new(0.3,0.3,0.3)
     }
-    Evil = {
-        Title = "Evil >:)", 
-        Color = Color3.new(0,9,0,0)
-    }
 }
 local PlayerRanks = {
     ["2615068449"] = "Creator", -- lolcat ( the creator of awesome script ) and ( also kown as youtubers who makeing doors but useing script and useing synapse x )
     ["2300945089"] = "Mr hong", -- kardin ( also kown as youtubers who makes doors speedruns video and script live stream )
-    ["3962486879"] = "Evil", -- Noob Not ( me who makes awesome script better )
+    ["3962486879"] = "Cool", -- Noob Not ( me who makes awesome script better )
     ["4878374612"] = "Cool", -- my friend NFORMURDRONES
     ["211059753"] = "Greg", --Greg idk 
     ["4740011995"] = "Cool" --my friend thongnung ( In real life )
