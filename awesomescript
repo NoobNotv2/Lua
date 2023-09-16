@@ -30,7 +30,8 @@ local Flux = loadstring(game:HttpGet("https://lolcat.boo/assets/flux-fixed"))()
 local Window = Flux:Window("awesome script", "doors", nil, Enum.KeyCode.RightControl)
 local Tab = Window:Tab("Manual", "rbxassetid://6026568198")
 local Tab2 = Window:Tab("Visual", "rbxassetid://6031763426")
-local Tab3 = Window:Tab("Custom Items", "rbxassetid://6022668888")
+local Tab3 = Window:Tab("Items", "rbxassetid://6022668888")
+local Tab4 = Window:Tab("Custom Items", "rbxassetid://6022668888")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -856,6 +857,37 @@ if Floor.Value == "Fools" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/e56he56e77he457eh56/Others-scripts/main/banana%20guns/scorce.lua", true))()
     end)
 end
+Tab4:Label("Crucfix")
+Tab4:Slider("Use","",0,100,0,function(v123)
+    CruUseValue = v123;
+end)
+Tab4:Slider("Range","",0,50,0,function(v124)
+    CruUseValue = v123;
+end)
+Tab4:Toggle("On anaything","Use it for Object",false,function(Cruanything)
+    Cruanything = v125;
+end)
+Tab4:Toggle("Fail","Use it for fail",false,function(CruFail)
+    CruFail = v126;
+end)
+Tab4:Button("Get crucfix","",function()
+    local v127 = 86 - (84 + 2);
+	local v128;
+	while true do
+		if (v127 == (2 - 0)) then
+			v128:Destroy();
+			_G.Uses = CruUseValue;
+			_G.Range = CruRange;
+			v127 = 3 + 0;
+		end
+		if (v127 == (3 + 0)) then
+			_G.OnAnything = Cruanything;
+			_G.Fail = CruFail;
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua"))();
+			break;
+		end
+	end
+end)
 TextChatService.OnIncomingMessage = function(MessageData)
     task.spawn(function()
         local ChatWindow = game.CoreGui.ExperienceChat.appLayout.chatWindow.scrollingView.bottomLockedScrollView.RCTScrollView.RCTScrollContentView
