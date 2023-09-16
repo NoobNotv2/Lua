@@ -2,9 +2,33 @@
 local Player = game.Players.LocalPlayer
 if game.CoreGui:FindFirstChild("FluxLib") or game.CoreGui:FindFirstChild("Message") then return end
 repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
-local identify = loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/Script/main/Check%20identify%20executor%20if%20its%20not%20supported'))()
-local Flux = loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/FLUX-Lib/main/Fixed'))() --Booting Lib
---local Flux = loadstring(game:HttpGet('https://lolcat.boo/assets/flux-fixed'))()
+if identifyexecutor() ~= "Synapse X" then
+    local Warn = Instance.new("Message", game.CoreGui)
+    local RunScript
+    local con
+    Warn.Text = "WARNING: awesome script is Build for Synapse X. You may encounter bugs while using " .. identifyexecutor() .. ".\nPress BACKSPACE to stop script execution. Press ENTER to load anyway."
+    con = game.UserInputService.InputBegan:Connect(function(Input, Typing)
+        if Typing then return end
+        if Input.KeyCode == Enum.KeyCode.Backspace then
+            RunScript = false
+            Warn:Destroy()
+            con:Disconnect()
+        elseif Input.KeyCode == Enum.KeyCode.Return then
+            RunScript = true
+            Warn:Destroy()
+            con:Disconnect()
+        end
+    end)
+    while task.wait(1) do
+        if RunScript == false then
+            return
+        elseif RunScript then
+            break
+        end
+    end
+end
+local Flux = loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/Script/main/flux-fixed'))() --Booting Lib
+
 local Window = Flux:Window("awesome script  ", "Doors | "..Player.Name..".", nil, Enum.KeyCode.RightControl)
 -- Create tab
 local Tab = Window:Tab("[>Manual<]", "rbxassetid://6026568198")
