@@ -1,4 +1,3 @@
--- Last Update was a FUCKING Big mistake its just break the script and can't run anymore so i recreate it
 if game.CoreGui:FindFirstChild("FluxLib") or game.CoreGui:FindFirstChild("Message") then return end
 repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 if identifyexecutor() ~= "Synapse X" then
@@ -474,6 +473,151 @@ EntityInfo.A90.OnClientEvent:Connect(function()
             require(CustomA90Module)(require(Main_Game))
         end)
     end
+end)
+Tab:Toggle("Auto Clam Gold (WIP)","",false,function(v74)
+    local v75 = 1975 - (1913 + 62);
+	while true do
+		if (v75 == (0 + 0)) then
+			v5.draweraura = v74;
+			if v74 then
+				local function v412(v454)
+					local function v455(v525)
+						if v525:IsA("Model") then
+							if (v525.Name == "DrawerContainer") then
+								local v691 = 0 - 0;
+								local v692;
+								while true do
+									if (v691 == (1933 - (565 + 1368))) then
+										v692 = v525:WaitForChild("Knobs");
+										if v692 then
+											local v839 = 0 - 0;
+											local v840;
+											local v841;
+											while true do
+												if (v839 == 0) then
+													v840 = v692:WaitForChild("ActivateEventPrompt");
+													v841 = v840:GetAttribute("Interactions");
+													v839 = 1662 - (1477 + 184);
+												end
+												if (v839 == 1) then
+													if not v841 then
+														task.spawn(function()
+															repeat
+																task.wait(0.1 - 0);
+																if (v1:DistanceFromCharacter(v692.Position) <= 12) then
+																	fireproximityprompt(v840);
+																end
+															until v840:GetAttribute("Interactions") or not v5.draweraura 
+														end);
+													end
+													break;
+												end
+											end
+										end
+										break;
+									end
+								end
+							elseif (v525.Name == "GoldPile") then
+								local v761 = 0;
+								local v762;
+								local v763;
+								while true do
+									if (v761 == 0) then
+										v762 = v525:WaitForChild("LootPrompt");
+										v763 = v762:GetAttribute("Interactions");
+										v761 = 1;
+									end
+									if (v761 == 1) then
+										if not v763 then
+											task.spawn(function()
+												repeat
+													task.wait(0.1 + 0);
+													if (v1:DistanceFromCharacter(v525.PrimaryPart.Position) <= (868 - (564 + 292))) then
+														fireproximityprompt(v762);
+													end
+												until v762:GetAttribute("Interactions") or not v5.draweraura 
+											end);
+										end
+										break;
+									end
+								end
+							elseif (v525.Name:sub(1 - 0, 8) == "ChestBox") then
+								local v826 = v525:WaitForChild("ActivateEventPrompt");
+								local v827 = v826:GetAttribute("Interactions");
+								if not v827 then
+									task.spawn(function()
+										repeat
+											task.wait(0.1 - 0);
+											if (v1:DistanceFromCharacter(v525.PrimaryPart.Position) <= (316 - (244 + 60))) then
+												fireproximityprompt(v826);
+											end
+										until v826:GetAttribute("Interactions") or not v5.draweraura 
+									end);
+								end
+							elseif (v525.Name == "RolltopContainer") then
+								local v858 = 0 + 0;
+								local v859;
+								local v860;
+								while true do
+									if (v858 == (476 - (41 + 435))) then
+										v859 = v525:WaitForChild("ActivateEventPrompt");
+										v860 = v859:GetAttribute("Interactions");
+										v858 = 1002 - (938 + 63);
+									end
+									if (v858 == 1) then
+										if not v860 then
+											task.spawn(function()
+												repeat
+													local v905 = 0;
+													while true do
+														if (v905 == (0 + 0)) then
+															task.wait(1125.1 - (936 + 189));
+															if (v1:DistanceFromCharacter(v525.PrimaryPart.Position) <= 12) then
+																fireproximityprompt(v859);
+															end
+															break;
+														end
+													end
+												until v859:GetAttribute("Interactions") or not v5.draweraura 
+											end);
+										end
+										break;
+									end
+								end
+							end
+						end
+					end
+					local v456;
+					v456 = v454.DescendantAdded:Connect(function(v526)
+						v455(v526);
+					end);
+					for v527, v528 in pairs(v454:GetDescendants()) do
+						v455(v528);
+					end
+					task.spawn(function()
+						repeat
+							task.wait();
+						until not v5.draweraura 
+						v456:Disconnect();
+					end);
+				end
+				local v413;
+				v413 = workspace.CurrentRooms.ChildAdded:Connect(function(v457)
+					v412(v457);
+				end);
+				for v458, v459 in pairs(workspace.CurrentRooms:GetChildren()) do
+					if v459:FindFirstChild("Assets") then
+						v412(v459);
+					end
+				end
+				repeat
+					task.wait();
+				until not v5.draweraura 
+				v413:Disconnect();
+			end
+			break;
+		end
+	end
 end)
 Tab:Toggle("Closet Exit Fix","Fixes the bug where you can't exit a closet right after entering it",false,function(Bool)
     ClosetExitFix = Bool
