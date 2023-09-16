@@ -24,3 +24,9 @@ Past Update for like 1 weeks :
 ```diff
 - Remove End keybind to close/open gui
 ```
+9/16/2023 at 4:52 PM Update :
+```diff
+- Remove credits tab
+- Remove Misc tab
+- Clear everything
+```
