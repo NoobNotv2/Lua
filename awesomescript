@@ -1,21 +1,20 @@
--- Join my discord: https://discord.gg/zkKrRWZmQA lolcat server for normal awesome script: https://discord.gg/eSfnvXJw
-local Player = game.Players.LocalPlayer
+-- Last Update was a FUCKING Big mistake its just break the script and can't run anymore so i recreate it
 if game.CoreGui:FindFirstChild("FluxLib") or game.CoreGui:FindFirstChild("Message") then return end
 repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 if identifyexecutor() ~= "Synapse X" then
-    local Warn = Instance.new("Message", game.CoreGui)
+    local m = Instance.new("Message", game.CoreGui)
     local RunScript
     local con
-    Warn.Text = "WARNING: awesome script is Build for Synapse X. You may encounter bugs while using " .. identifyexecutor() .. ".\nPress BACKSPACE to stop script execution. Press ENTER to load anyway."
+    m.Text = "WARNING: awesome script is Build for Synapse X. You may encounter bugs while using " .. identifyexecutor() .. ".\nPress BACKSPACE to stop script execution. Press ENTER to load anyway."
     con = game.UserInputService.InputBegan:Connect(function(Input, Typing)
         if Typing then return end
         if Input.KeyCode == Enum.KeyCode.Backspace then
             RunScript = false
-            Warn:Destroy()
+            m:Destroy()
             con:Disconnect()
         elseif Input.KeyCode == Enum.KeyCode.Return then
             RunScript = true
-            Warn:Destroy()
+            m:Destroy()
             con:Disconnect()
         end
     end)
@@ -27,17 +26,11 @@ if identifyexecutor() ~= "Synapse X" then
         end
     end
 end
-local Flux = loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/Script/main/flux-fixed'))() --Booting Lib
-local Window = Flux:Window("awesome script  ", "Doors | "..Player.Name..".", nil, Enum.KeyCode.RightControl)
--- Create tab
+local Flux = loadstring(game:HttpGet("https://lolcat.boo/assets/flux-fixed"))()
+local Window = Flux:Window("awesome script", "doors", nil, Enum.KeyCode.RightControl)
 local Tab = Window:Tab("Manual", "rbxassetid://6026568198")
 local Tab2 = Window:Tab("Visual", "rbxassetid://6031763426")
-local Tab3 = Window:Tab("Items", "rbxassetid://10885640682")
-local Tab4 = Window:Tab("PATCHEDDD", "rbxassetid://4483362458")
-local Tab5 = Window:Tab("credits", "rbxassetid://6022668888")
-local Tab6 = Window:Tab("misc", "rbxassetid://6022668888")
-local Tab7 = Window:Tab("Custom Items", "rbxassetid://6022668888")
--- Functions
+local Tab3 = Window:Tab("Custom Items", "rbxassetid://6022668888")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -71,6 +64,7 @@ local InteractNoclip = false
 local EnableInteractions = false
 local DisableDupe = false
 local DisableSeek = false
+local disablebananas = false
 local NoDark = false
 local Noclip = false
 local DisableTimothy = false
@@ -92,9 +86,8 @@ local A90Module
 local CustomA90Module
 local DoorRange
 local SpoofMotor
--- Esp
-local ESP_Items = {KeyObtain={"Key",1.5},LiveHintBook={"Book",1.5},Lighter={"Lighter",1.5},Lockpick={"Lockpicks",1.5},Vitamins={"Vitamins",1.5},Crucifix={"Crucifix",1.5},CrucifixWall={"Crucifix",1.5},SkeletonKey={"Skeleton Key",1.5},Flashlight={"Flashlight",1.5},Candle={"Candle",1.5},LiveBreakerPolePickup={"Fuse",1.5},Shears={"Shears",1.5},Battery={"Battery",1.5},PickupItem={"Paper",1.5},ElectricalKeyObtain={"Electrical Key",1.5},Shakelight={"Shakelight",1.5},Scanner={"iPad",1.5}}
-local ESP_Entities = {RushMoving={"Rush",5},AmbushMoving={"Ambush",5},FigureRagdoll={"Figure",7},FigureLibrary={"Figure",7},SeekMoving={"Seek",5.5},Screech={"Screech",2},Eyes={"Eyes",4},Snare={"Snare",2},A60={"A-60",10},A120={"A-120",10}}
+local ESP_Items = {KeyObtain={"Key",1.5},LiveHintBook={"Book",1.5},Lighter={"Lighter",1.5},Lockpick={"Lockpicks",1.5},Vitamins={"Vitamins",1.5},Crucifix={"Crucifix",1.5},CrucifixWall={"Crucifix",1.5},SkeletonKey={"Skeleton Key",1.5},Flashlight={"Flashlight",1.5},Candle={"Candle",1.5},LiveBreakerPolePickup={"Fuse",1.5},Shears={"Shears",1.5},Battery={"Battery",1.5},PickupItem={"Paper",1.5},ElectricalKeyObtain={"Electrical Key",1.5},Shakelight={"Shakelight",1.5},Scanner={"iPad",1.5},HolyGrenade ={"HolyGrenade", 1.5}, ShieldBig={"Big shield", 1.5}, ShieldMini={"little shield", 1.5}}
+local ESP_Entities = {RushMoving={"Rush",5},AmbushMoving={"Ambush",5},FigureRagdoll={"Figure",7},FigureLibrary={"Figure",7},SeekMoving={"Seek",5.5},Screech={"Screech",2},Eyes={"Eyes",4},Snare={"Snare",2},A60={"A-60",10},A120={"A-120",10}, JeffTheKiller={"JeffTheKiller", 1.5}}
 local ESP_Other = {Door={"Door",5},LeverForGate={"Lever",3},GoldPile={"Gold",0.5},Bandage={"Bandage",0.5}}
 local MainFrame = MainUI.MainFrame
 local GameData = ReplicatedStorage.GameData
@@ -104,39 +97,55 @@ local OldEnabled = {}
 local Module_Events = require(ClientModules.Module_Events)
 local ShatterFunction = Module_Events.shatter
 local HideTick = tick()
-local GlitchModule = EntityModules.Glitch
-local CustomGlitchModule = GlitchModule:Clone()
--- Ranks Players with helping
+--local GlitchModule = EntityModules.Glitch
+--local CustomGlitchModule = GlitchModule:Clone()
 local Ranks = {
     Creator = {
-        Title = "awesome script creator", --Lolcat
+        Title = "awesome script creator",
         Color = Color3.new(0,0.8,0)
     },
-    Mr. hong = {
-        Title = "Mr hong", --kardin
+    MrHong = {
+        Title = "Mr. Hong",
         Color = Color3.new(0.9,0,0)
     },
     Cool = {
-        Title = "Cool", --My friend NFORMURDRONES ( My best friend in discord ) , Noobnot ( me lol ) and thongnung ( best friend in real life )
+        Title = "Cool",
         Color = Color3.new(0,0.7,1)
     },
     Greg = {
-        Title = "official greg heffley", 
+        Title = "official greg heffley",
         Color = Color3.new(0.3,0.3,0.3)
+    },
+    Shut = {
+        Title = "cool xD",
+        Color = Color3.new(0,0.8,0)
     }
 }
 local PlayerRanks = {
-    ["2615068449"] = "Creator", -- lolcat ( the creator of awesome script ) and ( also kown as youtubers who makeing doors but useing script and useing synapse x )
-    ["2300945089"] = "Mr hong", -- kardin ( also kown as youtubers who makes doors speedruns video and script live stream )
-    ["3962486879"] = "Cool", -- Noob Not ( me who makes awesome script better )
-    ["4878374612"] = "Cool", -- my friend NFORMURDRONES
-    ["211059753"] = "Greg", --Greg idk 
-    ["4740011995"] = "Cool" --my friend thongnung ( In real life )
+    ["2615068449"] = "Creator",
+    ["2231703500"] = "MrHong",
+    ["152169512"] = "Cool",
+    ["1160958289"] = "Cool",
+    ["211059753"] = "Greg",
+    ["47466584"] = "Cool",
+    ["2873980896"] = "Shut"
 }
+game:GetService("RunService").RenderStepped:Connect(function()
+	pcall(function()
+		if _G.Gates then
+			if game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Gate"):FindFirstChild("ThingToOpen") then
+				game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Gate"):Destroy();
+			end
+		end
+	end);
+end);
+--CustomGlitchModule.Name = "CustomGlitch"
+--CustomGlitchModule.Parent = GlitchModule.Parent
+--GlitchModule:Destroy()
 EntityInfo.UseEnemyModule.OnClientEvent:Connect(function(Entity,x,...)
     if Entity == "Glitch" then
         if not DisableGlitch then
-            require(CustomGlitchModule).stuff(require(Main_Game),table.unpack({...}))
+            --require(CustomGlitchModule).stuff(require(Main_Game),table.unpack({...}))
         end
     end
 end)
@@ -465,155 +474,6 @@ EntityInfo.A90.OnClientEvent:Connect(function()
         end)
     end
 end)
--- Add toggle and button and slider
-
-Flux:Notification("Welcome To Awesome script doors [>DEV<]","Ok")
-
-Tab:Toggle("Auto Instant Interact (WIP)","Auto Loots everything",false,function(v74)
-    local v75 = 1975 - (1913 + 62);
-	while true do
-		if (v75 == (0 + 0)) then
-			v5.draweraura = v74;
-			if v74 then
-				local function v412(v454)
-					local function v455(v525)
-						if v525:IsA("Model") then
-							if (v525.Name == "DrawerContainer") then
-								local v691 = 0 - 0;
-								local v692;
-								while true do
-									if (v691 == (1933 - (565 + 1368))) then
-										v692 = v525:WaitForChild("Knobs");
-										if v692 then
-											local v839 = 0 - 0;
-											local v840;
-											local v841;
-											while true do
-												if (v839 == 0) then
-													v840 = v692:WaitForChild("ActivateEventPrompt");
-													v841 = v840:GetAttribute("Interactions");
-													v839 = 1662 - (1477 + 184);
-												end
-												if (v839 == 1) then
-													if not v841 then
-														task.spawn(function()
-															repeat
-																task.wait(0.1 - 0);
-																if (v1:DistanceFromCharacter(v692.Position) <= 12) then
-																	fireproximityprompt(v840);
-																end
-															until v840:GetAttribute("Interactions") or not v5.draweraura 
-														end);
-													end
-													break;
-												end
-											end
-										end
-										break;
-									end
-								end
-							elseif (v525.Name == "GoldPile") then
-								local v761 = 0;
-								local v762;
-								local v763;
-								while true do
-									if (v761 == 0) then
-										v762 = v525:WaitForChild("LootPrompt");
-										v763 = v762:GetAttribute("Interactions");
-										v761 = 1;
-									end
-									if (v761 == 1) then
-										if not v763 then
-											task.spawn(function()
-												repeat
-													task.wait(0.1 + 0);
-													if (v1:DistanceFromCharacter(v525.PrimaryPart.Position) <= (868 - (564 + 292))) then
-														fireproximityprompt(v762);
-													end
-												until v762:GetAttribute("Interactions") or not v5.draweraura 
-											end);
-										end
-										break;
-									end
-								end
-							elseif (v525.Name:sub(1 - 0, 8) == "ChestBox") then
-								local v826 = v525:WaitForChild("ActivateEventPrompt");
-								local v827 = v826:GetAttribute("Interactions");
-								if not v827 then
-									task.spawn(function()
-										repeat
-											task.wait(0.1 - 0);
-											if (v1:DistanceFromCharacter(v525.PrimaryPart.Position) <= (316 - (244 + 60))) then
-												fireproximityprompt(v826);
-											end
-										until v826:GetAttribute("Interactions") or not v5.draweraura 
-									end);
-								end
-							elseif (v525.Name == "RolltopContainer") then
-								local v858 = 0 + 0;
-								local v859;
-								local v860;
-								while true do
-									if (v858 == (476 - (41 + 435))) then
-										v859 = v525:WaitForChild("ActivateEventPrompt");
-										v860 = v859:GetAttribute("Interactions");
-										v858 = 1002 - (938 + 63);
-									end
-									if (v858 == 1) then
-										if not v860 then
-											task.spawn(function()
-												repeat
-													local v905 = 0;
-													while true do
-														if (v905 == (0 + 0)) then
-															task.wait(1125.1 - (936 + 189));
-															if (v1:DistanceFromCharacter(v525.PrimaryPart.Position) <= 12) then
-																fireproximityprompt(v859);
-															end
-															break;
-														end
-													end
-												until v859:GetAttribute("Interactions") or not v5.draweraura 
-											end);
-										end
-										break;
-									end
-								end
-							end
-						end
-					end
-					local v456;
-					v456 = v454.DescendantAdded:Connect(function(v526)
-						v455(v526);
-					end);
-					for v527, v528 in pairs(v454:GetDescendants()) do
-						v455(v528);
-					end
-					task.spawn(function()
-						repeat
-							task.wait();
-						until not v5.draweraura 
-						v456:Disconnect();
-					end);
-				end
-				local v413;
-				v413 = workspace.CurrentRooms.ChildAdded:Connect(function(v457)
-					v412(v457);
-				end);
-				for v458, v459 in pairs(workspace.CurrentRooms:GetChildren()) do
-					if v459:FindFirstChild("Assets") then
-						v412(v459);
-					end
-				end
-				repeat
-					task.wait();
-				until not v5.draweraura 
-				v413:Disconnect();
-			end
-			break;
-		end
-	end
-end)
 Tab:Toggle("Closet Exit Fix","Fixes the bug where you can't exit a closet right after entering it",false,function(Bool)
     ClosetExitFix = Bool
 end)
@@ -626,7 +486,7 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then
             end
         end
     end)
-    Tab:Toggle("Remove Seek Collision","Makes it so you can't trigger Seek to spawn. Other players still can.",false,function(Bool)
+    Tab:Toggle("Disable Seek Trigger","Makes it so you can't trigger Seek to spawn. Other players still can.",false,function(Bool)
         DisableSeek = Bool
         for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
             if Object.Name == "Collision" then
@@ -634,7 +494,16 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then
             end
         end
     end)
-    Tab:Toggle("Disable Snare stun","Makes it so you won't get stunned or take damage from Snare when stepping on it.",false,function(Bool)
+    
+    Tab:Toggle("Disable Bananas","Makes it so you can't trigger Seek to spawn. Other players still can.",false,function(Bool)
+        disablebananas = Bool
+        for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
+            if Object.Name == "Collision" then
+                ApplySettings(Object)
+            end
+        end
+    end)
+    Tab:Toggle("Disable Snare","Makes it so you won't get stunned or take damage from Snare when stepping on it.",false,function(Bool)
         DisableSnare = Bool
         for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
             if Object.Name == "Snare" then
@@ -669,13 +538,13 @@ Tab:Toggle("Enable All Interactions","Sets the Enabled property of all Proximity
         end
     end
 end)
-Tab:Toggle("No Eyes Damage","Others players see You looking down when eyes spawns",false,function(Bool)
+Tab:Toggle("No Eyes Damages","Makes the game (and other players) think you are looking down whenever eyes spawns.",false,function(Bool)
     DisableEyes = Bool
     if workspace:FindFirstChild("Eyes") then
         MotorReplication:FireServer(0,DisableEyes and -120 or 0,0,false)
     end
 end)
-Tab:Toggle("Door Reach","Makes it so you can open doors from much further away.",false,function(Bool)
+Tab:Toggle("Increased Door Opening Range","Makes it so you can open doors from much further away.",false,function(Bool)
     if Bool then
         DoorRange = RunService.Heartbeat:Connect(function()
             if not workspace:FindFirstChild("A120") then
@@ -686,7 +555,7 @@ Tab:Toggle("Door Reach","Makes it so you can open doors from much further away."
         DoorRange:Disconnect()
     end
 end)
-Tab:Toggle("Reach","Doubles the Max Activation Distance for Proximity Prompts.",false,function(Bool)
+Tab:Toggle("Increased Interaction Range","Doubles the Max Activation Distance for Proximity Prompts.",false,function(Bool)
     IncreasedDistance = Bool
     for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
         if Object:IsA("ProximityPrompt") then
@@ -694,7 +563,7 @@ Tab:Toggle("Reach","Doubles the Max Activation Distance for Proximity Prompts.",
         end
     end
 end)
-Tab:Toggle("No E to wait","Removes having to hold down the button for a long period of time on Proximity Prompts.",false,function(Bool)
+Tab:Toggle("Instant Interact","Removes having to hold down the button for a long period of time on Proximity Prompts.",false,function(Bool)
     InstantInteract = Bool
     for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
         if Object:IsA("ProximityPrompt") then
@@ -702,7 +571,7 @@ Tab:Toggle("No E to wait","Removes having to hold down the button for a long per
         end
     end
 end)
-Tab:Toggle("Reach make it works","mybe have a lot of bugs",false,function(Bool)
+Tab:Toggle("Interact Through Objects","Lets you interact with Proximity Prompts through Parts. Could be useful for grabbing book faster.",false,function(Bool)
     InteractNoclip = Bool
     for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
         if Object:IsA("ProximityPrompt") then
@@ -710,39 +579,23 @@ Tab:Toggle("Reach make it works","mybe have a lot of bugs",false,function(Bool)
         end
     end
 end)
-Tab:Toggle("Disable Banana Peel damage","Not slips into the banana peels [>SUPER HARD MODE<]",false,function(Bool) --Noclip
-    Noclip = Bool --Noclip Callback after press toggle
+Tab:Toggle("Skip Breaker Puzzle","Tricks the game into thinking you completed the breaker puzzle at Room 100. May take up to 10 seconds to work.",false,function(Bool)
+    NoBreaker = Bool
+    while task.wait(1) do
+        if not NoBreaker then
+            break
+        end
+        EntityInfo.EBF:FireServer()
+    end
+end)
+Tab:Toggle("Noclip + bypass","Lets you walk through any object. Does not work on Doors.",false,function(Bool)
+    Noclip = Bool
     if Character:FindFirstChild("Collision") then
         Character.Collision.CanCollide = not Noclip
     end
     PrimaryPart.CanCollide = not Noclip
 end)
-Tab:Toggle("Skip breaker puzzle","it will execute to entity info and fire server EBF (Breakerbox). You have to wait 10 sec",false,function(Bool)
-    local v141 = 0;
-	while true do
-		if (v141 == (254 - (79 + 175))) then
-			_G.antibanananana = v140;
-			if (_G.antibanananana == true) then
-				for v508, v509 in pairs(game:GetService("Workspace"):GetDescendants()) do
-					if v509:IsA("Part") then
-						if (v509.Name == "BananaPeel") then
-							v509.CanTouch = false;
-						end
-					end
-				end
-			end
-			break;
-		end
-	end
-end)
-Tab:Toggle("Noclip + Bypass","Lets you walk through any object. Does not work on Doors.",false,function(Bool) --Noclip
-    Noclip = Bool --Noclip Callback after press toggle
-    if Character:FindFirstChild("Collision") then
-        Character.Collision.CanCollide = not Noclip
-    end
-    PrimaryPart.CanCollide = not Noclip
-end)
-Tab:Slider("Walkspeed","Set Your walkspeed.",0,93,0,function(speed) --Speed boost slider
+Tab:Slider("Speed Boost","Boosts your speed.",0,6,0,function(speed)
     SpeedBoost = speed
     ApplySpeed(true)
 end)
@@ -789,8 +642,8 @@ Tab:Toggle("No Acceleration","NO Slow DOwn",false,function(v60)
 		game.Players.LocalPlayer.Character.UpperTorso.Massless = v190;
 	end
 end)
-if Floor.Value == "Hotel" or Floor.Value == "Fools" then --Unlock lib lockpad
-    Tab:Button("Auto Library Padlock","Instantly inputs the Padlock code for Room 50. Can guess up to 3 digits. Requires 1 Player to have the hint paper.",function()
+if Floor.Value == "Hotel" or Floor.Value == "Fools" then
+    Tab:Button("Unlock Library Padlock","Instantly inputs the Padlock code for Room 50. Can guess up to 3 digits. Requires 1 Player to have the hint paper.",function()
         local Paper = workspace:FindFirstChild("LibraryHintPaper",true) or workspace:FindFirstChild("LibraryHintPaperHard",true) or Players:FindFirstChild("LibraryHintPaper",true) or Players:FindFirstChild("LibraryHintPaperHard",true)
         if not Paper then
             Flux:Notification("Someone needs to have the Hint Paper to use this.","OK")
@@ -855,21 +708,7 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then --Unlock lib lockpad
         end
     end)
 end
-Tab:Button("Room 50 code decipher ","Press this button if your in Door 50",function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/QjUrAnuE"))()
-end)
-Tab:Button("Reset ","E",function()
-    game.Players.LocalPlayer.Character.Humanoid.Health = 0
-end)
-Tab:Button("entity notifiaction ( Hotel )","",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/e56he56e77he457eh56/Others-scripts/main/entity%20notifiaction/hotel.lua"))()
-end)
-if Floor.Value == "Rooms" then
-    Tab:Button("entity notifiaction ( Rooms )","",function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/e56he56e77he457eh56/Others-scripts/main/entity%20notifiaction/Rooms.lua"))()
-    end)
-end
-Tab:Toggle("Control others players tools","Repeatedly uses everyone else's items like Vitamins, The Lighter, and The Flashlight.",false,function(Bool)
+Tab:Toggle("Waste Other Players Items","Repeatedly uses everyone else's items like Vitamins, The Lighter, and The Flashlight.",false,function(Bool)
     WasteItems = Bool
     while task.wait(1) do
         if not WasteItems then
@@ -892,15 +731,12 @@ Tab:Toggle("Control others players tools","Repeatedly uses everyone else's items
         end
     end
 end)
-Tab:Button("Revive","Breaking Revives",function()
-    game.ReplicatedStorage.EntityInfo.Revive:FireServer()
-end)
 if Floor.Value == "Rooms" then
     Tab2:Toggle("Disable A-90","Disables A-90 visual, sound, and damage.",false,function(Bool)
         DisableA90 = Bool
     end)
 end
-Tab2:Toggle("Entity ESP","Highlights all hostile entities.",false,function(Bool)     --ESP
+Tab2:Toggle("Entity ESP","Highlights all hostile entities.",false,function(Bool)
     EntityESP = Bool
     for _,Object in pairs(workspace:GetDescendants()) do
         if ESP_Entities[Object.Name] then
@@ -933,15 +769,9 @@ Tab2:Toggle("Other ESP","Highlights all hostile entities.",false,function(Bool)
         end
     end
 end)
-game:GetService("RunService").RenderStepped:Connect(function()
-	pcall(function()
-		if _G.Gates then
-			if game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Gate"):FindFirstChild("ThingToOpen") then
-				game.workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Gate"):Destroy();
-			end
-		end
-	end);
-end);
+Tab2:Toggle("Remove Gate Doors","Delete all Gates.",false,function(v86)
+    _G.Gates = v86;
+end)
 Tab2:Toggle("Remove Doors","Need to open door",false,function(v167)
     local v168 = 0;
 	while true do
@@ -966,9 +796,6 @@ Tab2:Toggle("Remove Doors","Need to open door",false,function(v167)
 		end
 	end
 end)
-Tab2:Toggle("Remove Gate Doors","Delete all Gates.",false,function(v86)
-    _G.Gates = v86;
-end)
 Tab2:Toggle("Remove Death Messages","Completely skips the Guiding/Curious light messages that appear after you die.",false,function(Bool)
     RemoveDeathHint = Bool
 end)
@@ -980,7 +807,7 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then
         DisableTimothy = Bool
     end)
 end
-Tab2:Toggle("Spam Motor Replication","Other players will basically see you having a seizure. or spining around",false,function(Bool)
+Tab2:Toggle("Spam Motor Replication","Other players will basically see you having a seizure.",false,function(Bool)
     if Bool then
         SpoofMotor = game:GetService("RunService").Heartbeat:Connect(function()
             MotorReplication:FireServer(math.random(1,100000),math.random(1,100000),math.random(1,100000),false)
@@ -989,6 +816,17 @@ Tab2:Toggle("Spam Motor Replication","Other players will basically see you havin
         SpoofMotor:Disconnect()
     end
 end)
+if Floor.Value == "Hotel" or Floor.Value == "Fools" then
+    Tab2:Toggle("Unbreakable Lights","Makes it so entities like Rush and Ambush won't shatter/break the lights (which makes the room dark)",false,function(Bool)
+        if Bool then
+            Module_Events.shatter = function(Room)
+                table.insert(ScreechSafeRooms, tostring(Room))
+            end
+        else
+            Module_Events.shatter = ShatterFunction
+        end
+    end)
+end
 Tab3:Button("Flashlight","Gives you a flashlight and Use it care fully!",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Flashlight.lua"))()
 end)
@@ -1018,83 +856,13 @@ if Floor.Value == "Fools" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/e56he56e77he457eh56/Others-scripts/main/banana%20guns/scorce.lua", true))()
     end)
 end
-if Floor.Value == "Hotel" or Floor.Value == "Fools" then
-    Tab2:Toggle("Unbreakable Lights","Makes it so entities like Rush and Ambush won't shatter/break the lights (which makes the room dark)",false,function(Bool)
-        if Bool then
-            Module_Events.shatter = function(Room)
-                table.insert(ScreechSafeRooms, tostring(Room))
-            end
-        else
-            Module_Events.shatter = ShatterFunction
-        end
-    end)
-end
-Tab5:Label("Noob Not V2(hi)#8797 - Make awesome script better")
-Tab5:Label("lolcat#3877 - creator of awesome script")
-
-Tab6:Label("Im adding this because im dumb")
-Tab6:Button("Anti Afk","for who afk and not get kicked",function()
-    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
-        v:Disable()
-    end
-end)
-Tab6:Button("Unlock camera","Unlock your camera like first persion and in custine it will make you can't turn camera lol",function()
-    local Camera = workspace.CurrentCamera
-    local Head = game.Players.LocalPlayer.Character.Head
-    game:GetService("RunService").RenderStepped:Connect(function()
-        Camera.CFrame = Head.CFrame
-    end)
-end)
-Tab6:Button("Simple spy","the script will be copyed in the clipboard and i needed you to paste in like : chrome, firefox, edge, opera and brave",function()
-    setclipboard("https://github.com/exxtremestuffs/SimpleSpySource/tree/master")
-end)
-Tab6:Button("Rejoin","Rejoin your game",function()
-    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-end)
-Tab6:Button("Infinite yield","JIT",function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-end)
-Tab6:Button("SERVER STATUS","It will copy to your clipboard and you have to place it in autoexec folder",function()
-    setclipboard("https://pastebin.com/raw/K0sq5C4G");
-end)
-Tab7:Label("Crucfix")
-Tab7:Slider("Use","",0,100,0,function(v123)
-    CruUseValue = v123;
-end)
-Tab7:Slider("Range","",0,50,0,function(v124)
-    CruUseValue = v123;
-end)
-Tab7:Toggle("On anaything","Use it for Object",false,function(Cruanything)
-    Cruanything = v125;
-end)
-Tab7:Toggle("Fail","Use it for fail",false,function(CruFail)
-    CruFail = v126;
-end)
-Tab7:Button("Get crucfix","",function()
-    local v127 = 86 - (84 + 2);
-	local v128;
-	while true do
-		if (v127 == (2 - 0)) then
-			v128:Destroy();
-			_G.Uses = CruUseValue;
-			_G.Range = CruRange;
-			v127 = 3 + 0;
-		end
-		if (v127 == (3 + 0)) then
-			_G.OnAnything = Cruanything;
-			_G.Fail = CruFail;
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua"))();
-			break;
-		end
-	end
-end)
 TextChatService.OnIncomingMessage = function(MessageData)
     task.spawn(function()
         local ChatWindow = game.CoreGui.ExperienceChat.appLayout.chatWindow.scrollingView.bottomLockedScrollView.RCTScrollView.RCTScrollContentView
         if MessageData.Status == Enum.TextChatMessageStatus.Sending or (MessageData.TextSource and MessageData.Status == Enum.TextChatMessageStatus.Success and MessageData.TextSource.UserId ~= LocalPlayer.UserId) then
             if PlayerRanks[tostring(MessageData.TextSource.UserId)] then
                 local Rank = Ranks[PlayerRanks[tostring(MessageData.TextSource.UserId)]]
-                local Prefix = "<font color=\"#" .. string.format("%02X%02X%02X",Rank.Color.R*0xFF,Rank.Color.G*0xFF,Rank.Color.B*0xFF) .. "\">[" .. Rank.Title .. "]</font> "
+                local Prefix = "<font color=\"#" .. string.format("%02X%02X%02X",Rank.Color.R*255,Rank.Color.G*255,Rank.Color.B*255) .. "\">[" .. Rank.Title .. "]</font> "
                 local Message = ChatWindow:WaitForChild(MessageData.MessageId, 1)
                 if Message then
                     Message.Text = Prefix .. Message.Text
