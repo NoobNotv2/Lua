@@ -29,4 +29,5 @@ Past Update for like 1 weeks :
 - Remove credits tab
 - Remove Misc tab
 - Clear everything
++ Getting Back Up
 ```
