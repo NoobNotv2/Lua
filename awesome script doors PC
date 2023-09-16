@@ -2,41 +2,18 @@
 local Player = game.Players.LocalPlayer
 if game.CoreGui:FindFirstChild("FluxLib") or game.CoreGui:FindFirstChild("Message") then return end
 repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
-if identifyexecutor() ~= "Synapse X" then
-    local Warn = Instance.new("Message", game.CoreGui)
-    local RunScript
-    local con
-    Warn.Text = "WARNING: awesome script is Build for Synapse X. You may encounter bugs while using " .. identifyexecutor() .. ".\nPress BACKSPACE to stop script execution. Press ENTER to load anyway."
-    con = game.UserInputService.InputBegan:Connect(function(Input, Typing)
-        if Typing then return end
-        if Input.KeyCode == Enum.KeyCode.Backspace then
-            RunScript = false
-            Warn:Destroy()
-            con:Disconnect()
-        elseif Input.KeyCode == Enum.KeyCode.Return then
-            RunScript = true
-            Warn:Destroy()
-            con:Disconnect()
-        end
-    end)
-    while task.wait(1) do
-        if RunScript == false then
-            return
-        elseif RunScript then
-            break
-        end
-    end
-end
-local Flux = loadstring(game:HttpGetAsync("https://noobnot8753.000webhostapp.com/assets/flux-fixed"))() --Booting Lib
+local identify = loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/Script/main/Check%20identify%20executor%20if%20its%20not%20supported'))()
+local Flux = loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/FLUX-Lib/main/Fixed'))() --Booting Lib
+--local Flux = loadstring(game:HttpGet('https://lolcat.boo/assets/flux-fixed'))()
 local Window = Flux:Window("awesome script  ", "Doors | "..Player.Name..".", nil, Enum.KeyCode.RightControl)
 -- Create tab
-local Tab = Window:Tab("Manual", "rbxassetid://6026568198")
-local Tab2 = Window:Tab("Visual and Esp", "rbxassetid://6031763426")
-local Tab3 = Window:Tab("Items", "rbxassetid://10885640682")
-local Tab4 = Window:Tab("Icons for player ( PATCHEDDDDD )", "rbxassetid://10048816455")
-local Tab5 = Window:Tab("credits", "rbxassetid://6022668888")
-local Tab6 = Window:Tab("misc", "rbxassetid://6022668888")
-local Tab7 = Window:Tab("Custom Items", "rbxassetid://6022668888")
+local Tab = Window:Tab("[>Manual<]", "rbxassetid://6026568198")
+local Tab2 = Window:Tab("[>Visual<]", "rbxassetid://6031763426")
+local Tab3 = Window:Tab("[>Items<]", "rbxassetid://10885640682")
+local Tab4 = Window:Tab("", "rbxassetid://")
+local Tab5 = Window:Tab("[>credits<]", "rbxassetid://6022668888")
+local Tab6 = Window:Tab("[>misc<]", "rbxassetid://6022668888")
+local Tab7 = Window:Tab("[>Custom Items<]", "rbxassetid://6022668888")
 -- Functions
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
@@ -470,6 +447,9 @@ EntityInfo.A90.OnClientEvent:Connect(function()
     end
 end)
 -- Add toggle and button and slider
+
+Flux:Notification("Welcome To Awesome script doors [>DEV<]","Ok")
+
 Tab:Toggle("Auto Instant Interact (WIP)","Auto Loots everything",false,function(v74)
     local v75 = 1975 - (1913 + 62);
 	while true do
@@ -711,14 +691,30 @@ Tab:Toggle("Reach make it works","mybe have a lot of bugs",false,function(Bool)
         end
     end
 end)
-Tab:Toggle("Skip breaker puzzle","it will execute to entity info and fire server EBF (Breakerbox). You have to wait 10 sec",false,function(Bool)
-    NoBreaker = Bool
-    while task.wait(1) do
-        if not NoBreaker then
-            break
-        end
-        EntityInfo.EBF:FireServer()
+Tab:Toggle("Disable Banana Peel damage","Not slips into the banana peels [>SUPER HARD MODE<]",false,function(Bool) --Noclip
+    Noclip = Bool --Noclip Callback after press toggle
+    if Character:FindFirstChild("Collision") then
+        Character.Collision.CanCollide = not Noclip
     end
+    PrimaryPart.CanCollide = not Noclip
+end)
+Tab:Toggle("Skip breaker puzzle","it will execute to entity info and fire server EBF (Breakerbox). You have to wait 10 sec",false,function(Bool)
+    local v141 = 0;
+	while true do
+		if (v141 == (254 - (79 + 175))) then
+			_G.antibanananana = v140;
+			if (_G.antibanananana == true) then
+				for v508, v509 in pairs(game:GetService("Workspace"):GetDescendants()) do
+					if v509:IsA("Part") then
+						if (v509.Name == "BananaPeel") then
+							v509.CanTouch = false;
+						end
+					end
+				end
+			end
+			break;
+		end
+	end
 end)
 Tab:Toggle("Noclip + Bypass","Lets you walk through any object. Does not work on Doors.",false,function(Bool) --Noclip
     Noclip = Bool --Noclip Callback after press toggle
@@ -774,6 +770,58 @@ Tab:Toggle("No Acceleration","NO Slow DOwn",false,function(v60)
 		game.Players.LocalPlayer.Character.UpperTorso.Massless = v190;
 	end
 end)
+--[[Tab:Toggle("Spoof Potion","God Mode",false,function(v60)
+_G.Spoof = false;
+end)--]]
+tab:Bind("Spoof Potion", Enum.KeyCode.R, function()
+_G.Spoof = false;
+end)
+Options.KeyPicker:OnClick(function()
+	if (_G.Spoof == true) then
+		_G.Spoof = false;
+		getgenv().colgod = false;
+		for v283, v284 in next, game.Players.LocalPlayer.Character:GetDescendants() do
+			if (v284.IsA(v284, "BasePart") and (getgenv().colgod == false)) then
+				v284.CanCollide = true;
+			end
+		end
+		local v215 = game.Players.LocalPlayer.Character:FindFirstChild("Collision");
+		v215.Position = v215.Position + Vector3.new(214 - (22 + 192), 688 - (483 + 200), 0);
+		wait(0.5);
+		local v215 = game.Players.LocalPlayer.Character:FindFirstChild("Collision");
+		v215.Position = v215.Position + Vector3.new(1463 - (1404 + 59), 13 - 8, 0);
+		local function v217(v285)
+			firesignal(game.ReplicatedStorage.EntityInfo.Caption.OnClientEvent, v285);
+		end
+		v217("GodMode Disabled");
+		print("GodMode Disabled");
+		local v218 = Instance.new("Sound");
+		v218.Parent = game.SoundService;
+		v218.SoundId = "rbxassetid://4590657391";
+		v218.Volume = 6 - 1;
+		v218.PlayOnRemove = true;
+		v218:Destroy();
+	elseif (_G.Spoof == false) then
+		_G.Spoof = true;
+		local v344 = game.Players.LocalPlayer.Character:FindFirstChild("Collision");
+		v344.Position = v344.Position - Vector3.new(765 - (468 + 297), 5, 0);
+		wait(562.5 - (334 + 228));
+		getgenv().colgod = true;
+		local v344 = game.Players.LocalPlayer.Character:FindFirstChild("Collision");
+		v344.Position = v344.Position - Vector3.new(0, 16 - 11, 0 - 0);
+		local function v347(v419)
+			firesignal(game.ReplicatedStorage.EntityInfo.Caption.OnClientEvent, v419);
+		end
+		v347("GodMode Enabled");
+		print("GodMode Enabled");
+		local v348 = Instance.new("Sound");
+		v348.Parent = game.SoundService;
+		v348.SoundId = "rbxassetid://4590657391";
+		v348.Volume = 9 - 4;
+		v348.PlayOnRemove = true;
+		v348:Destroy();
+	end
+end);
 if Floor.Value == "Hotel" or Floor.Value == "Fools" then --Unlock lib lockpad
     Tab:Button("Auto Library Padlock","Instantly inputs the Padlock code for Room 50. Can guess up to 3 digits. Requires 1 Player to have the hint paper.",function()
         local Paper = workspace:FindFirstChild("LibraryHintPaper",true) or workspace:FindFirstChild("LibraryHintPaperHard",true) or Players:FindFirstChild("LibraryHintPaper",true) or Players:FindFirstChild("LibraryHintPaperHard",true)
