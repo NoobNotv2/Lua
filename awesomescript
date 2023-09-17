@@ -955,6 +955,13 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then
         DisableTimothy = Bool
     end)
 end
+Tab2:Toggle("Unlock mouse","Unlocks your mouse in doors",false,function(UnlockMD)
+    if UnlockMD then
+        require(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).freemouse = true
+    else
+        require(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).freemouse = false
+    end
+end)
 Tab2:Toggle("Spam Motor Replication","Other players will basically see you having a seizure.",false,function(Bool)
     if Bool then
         SpoofMotor = game:GetService("RunService").Heartbeat:Connect(function()
