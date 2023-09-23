@@ -31,3 +31,8 @@ Past Update for like 1 weeks :
 - Clear everything
 + Getting Back Up
 ```
+9/23/2023 At 12:07 AM Update :
+```diff
+- Creator of awesome script modded Patched the script
+- Remove everything
+```
