@@ -1,0 +1,2 @@
+repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+loadstring(game:HttpGet('URL OF SCRIPT'))()
