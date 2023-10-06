@@ -36,3 +36,11 @@ Past Update for like 1 weeks :
 - Creator of awesome script modded Patched the script
 - Remove everything
 ```
+Sorry i forgot to add a update and script is back up now 
+
+so Update : 10/6/2023 at 7:57 PM update :
+```diff
++ Add UWP Fps Boost
++ Add UWP fps boost For electron because when i press UWP Fps Boost its crash and thats why i added it
++ Add a Shakelight back
+```
