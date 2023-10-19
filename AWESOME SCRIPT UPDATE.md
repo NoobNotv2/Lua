@@ -44,3 +44,7 @@ so Update : 10/6/2023 at 7:57 PM update :
 + Add UWP fps boost For electron because when i press UWP Fps Boost its crash and thats why i added it
 + Add a Shakelight back
 ```
+19/10/2023 At 5🕥 PM we want to tell you if your using awesomescript doors
+So we are gonna discountiuned the script because all friends to help is gone form discord and Its for our Goodbye And this is not a joke
+and goodbye for using our script. :(
+
