@@ -641,7 +641,7 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then
         end
     end)
     
-    Tab:Toggle("Disable Bananas","Makes it so you can't trigger Seek to spawn. Other players still can.",false,function(Bool)
+    Tab:Toggle("Remove the fucking annoy Bananas","Makes it so you can't trigger Seek to spawn. Other players still can.",false,function(Bool)
         disablebananas = Bool
         for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
             if Object.Name == "Collision" then
@@ -684,7 +684,7 @@ Tab:Toggle("Enable All Interactions","Sets the Enabled property of all Proximity
         end
     end
 end)
-Tab:Toggle("No Eyes Damages","Makes the game (and other players) think you are looking down whenever eyes spawns.",false,function(Bool)
+Tab:Toggle("Always look Down when eyes spawn","Makes the game (and other players) think you are looking down whenever eyes spawns.",false,function(Bool)
     DisableEyes = Bool
     if workspace:FindFirstChild("Eyes") then
         MotorReplication:FireServer(0,DisableEyes and -120 or 0,0,false)
@@ -725,7 +725,7 @@ Tab:Toggle("Interact Through Objects","Lets you interact with Proximity Prompts 
         end
     end
 end)
-Tab:Toggle("Skip Breaker Puzzle","Tricks the game into thinking you completed the breaker puzzle at Room 100. May take up to 10 seconds to work.",false,function(Bool)
+Tab:Toggle("Complete Breaker Puzzle","Tricks the game into thinking you completed the breaker puzzle at Room 100. May take up to 10 seconds to work.",false,function(Bool)
     NoBreaker = Bool
     while task.wait(1) do
         if not NoBreaker then
@@ -1052,6 +1052,13 @@ end)
 Tab5:Toggle("UWP Fps boost","its will boost your fps ( LOW GRAPHICS QUALITY recommend )",false,function(UWPBoost)
     if UWPBoost then
         setfpscap(6000000)
+    else
+        setfpscap(60)
+    end
+end)
+Tab5:Toggle("UWP Fps boost <Electron only>","its will boost your fps ( LOW GRAPHICS QUALITY recommend )",false,function(UWPBoostEle)
+    if UWPBoostEle then
+        setfpscap(696969)
     else
         setfpscap(60)
     end
