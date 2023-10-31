@@ -1,7 +1,7 @@
 if game.CoreGui:FindFirstChild("FluxLib") or game.CoreGui:FindFirstChild("Message") then return end
 repeat task.wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character
-if identifyexecutor() ~= "Synapse X" then
 --[[
+if identifyexecutor() ~= "Synapse X" then
     local m = Instance.new("Message", game.CoreGui)
     local RunScript
     local con
@@ -33,6 +33,7 @@ local Tab = Window:Tab("Manual", "rbxassetid://6026568198")
 local Tab2 = Window:Tab("Visual", "rbxassetid://6031763426")
 local Tab3 = Window:Tab("Items", "rbxassetid://6022668888")
 local Tab4 = Window:Tab("Custom Items", "rbxassetid://6022668888")
+local Tab5 = Window:Tab("Performance", "rbxassetid://4483362458")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -220,7 +221,7 @@ local function ApplySettings(Object)
             if Object:FindFirstChild("RushNew") then
                 if not Object.RushNew:WaitForChild("PlaySound").Playing then return end
             end
-            local Color = ESP_Items[Object.Name] and Color3.fromRGB(229,159,18) or ESP_Entities[Object.Name] and Color3.fromRGB(220,119,119) or Color3.fromRGB(35,230,146)
+            local Color = ESP_Items[Object.Name] and Color3.fromRGB(229,159,18) or ESP_Entities[Object.Name] and Color3.fromRGB(220,119,119) or Color3.fromRGB(110, 2, 212)
             if Object.Name == "RushMoving" or Object.Name == "AmbushMoving" or Object.Name == "Eyes" or Object.Name == "A60" or Object.Name == "A120" then
                 for i = 1, 100 do
                     if Object:FindFirstChildOfClass("Part") then
@@ -642,7 +643,7 @@ if Floor.Value == "Hotel" or Floor.Value == "Fools" then
         end
     end)
     
-    Tab:Toggle("Disable Bananas","Makes it so you can't trigger Seek to spawn. Other players still can.",false,function(Bool)
+    Tab:Toggle("Remove the fucking annoy Bananas","Makes it so you can't trigger Seek to spawn. Other players still can.",false,function(Bool)
         disablebananas = Bool
         for _,Object in pairs(workspace.CurrentRooms:GetDescendants()) do
             if Object.Name == "Collision" then
@@ -685,7 +686,7 @@ Tab:Toggle("Enable All Interactions","Sets the Enabled property of all Proximity
         end
     end
 end)
-Tab:Toggle("No Eyes Damages","Makes the game (and other players) think you are looking down whenever eyes spawns.",false,function(Bool)
+Tab:Toggle("Always look Down when eyes spawn","Makes the game (and other players) think you are looking down whenever eyes spawns.",false,function(Bool)
     DisableEyes = Bool
     if workspace:FindFirstChild("Eyes") then
         MotorReplication:FireServer(0,DisableEyes and -120 or 0,0,false)
@@ -726,7 +727,7 @@ Tab:Toggle("Interact Through Objects","Lets you interact with Proximity Prompts 
         end
     end
 end)
-Tab:Toggle("Skip Breaker Puzzle","Tricks the game into thinking you completed the breaker puzzle at Room 100. May take up to 10 seconds to work.",false,function(Bool)
+Tab:Toggle("Complete Breaker Puzzle","Tricks the game into thinking you completed the breaker puzzle at Room 100. May take up to 10 seconds to work.",false,function(Bool)
     NoBreaker = Bool
     while task.wait(1) do
         if not NoBreaker then
@@ -1010,7 +1011,7 @@ Tab3:Button("Magic books","",function()
 end)
 if Floor.Value == "Fools" then
 	Tab3:Button("Banana guns","Gives you a tools that can trolling players >:)",function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/e56he56e77he457eh56/Others-scripts/main/banana%20guns/scorce.lua", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobNotv2/Lua/main/BananaGuns/Script.lua"))()
     end)
 end
 Tab4:Label("Crucfix")
@@ -1043,6 +1044,26 @@ Tab4:Button("Get crucfix","",function()
 			break;
 		end
 	end
+end)
+Tab4:Button("ShakeLight","",function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/DxrkHub/main/doors-scripts/hub-features/item-shakelight.lua'))()
+end)
+Tab4:Button("Coffee","",function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobNotv2/DxrkHub/main/doors-scripts/hub-features/item-coffee.lua'))()
+end)
+Tab5:Toggle("UWP Fps boost","its will boost your fps ( LOW GRAPHICS QUALITY recommend )",false,function(UWPBoost)
+    if UWPBoost then
+        setfpscap(6000000)
+    else
+        setfpscap(60)
+    end
+end)
+Tab5:Toggle("UWP Fps boost <Electron only>","its will boost your fps ( LOW GRAPHICS QUALITY recommend )",false,function(UWPBoostEle)
+    if UWPBoostEle then
+        setfpscap(696969)
+    else
+        setfpscap(60)
+    end
 end)
 TextChatService.OnIncomingMessage = function(MessageData)
     task.spawn(function()
